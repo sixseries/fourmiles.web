@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes move-twink-back {
+            from {background-position:0 0;}
+            to {background-position:-10000px 5000px;}
+        }
+        @keyframes move-clouds-back {
+            from {background-position:0 0;}
+            to {background-position:10000px 0;}
+        }
+
+        .stars, .twinkling, .clouds {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .stars {
+            background:#000 url(stars.png) repeat top center;
+            z-index: 0;
+        }
+
+        .twinkling {
+            background:transparent url(twinkling.png) repeat top center;
+            z-index: 1;
+            opacity: 0.7; 
+            animation: move-twink-back 200s linear infinite;
+        }
+
+        .clouds {
+            background:transparent url(clouds.png) repeat top center;
+            z-index: 2;
+            opacity: .4;
+            animation: move-clouds-back 200s linear infinite;
+        }
+
+        body {
+            font-family: 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background: linear-gradient(180deg, #07102a 0%, #0b1020 100%);
+            color: #fff;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; 
+        }
+
+        .title {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+        
+        .title h1{
+            font-size: 36px;
+            font-family: 'Lato', sans-serif;
+            
+            margin: 0; 
+            text-align: center;
+
+            color:#ffffff;
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .fallback-link {
+            position: fixed;
+            z-index: 3;
+            transform: translateY(100px); 
+            font-size: 1rem;
+            color: #6ee7b7; 
+            text-align: center;
+            width: 100%;
+        }
+        
+        @media (max-width: 600px) {
+            .title h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+
+    <script>
+        const redirectUrl = "https://fourmiles.vercel.app/";
+
+        function startRedirect() {
+            window.location.replace(redirectUrl);
+        }
+
+        document.addEventListener('DOMContentLoaded', startRedirect);
+    </script>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+
+    <div class="title">
+        <h1 id="mainTitle">REDIRECTING NOW...</h1>
+    </div>
+    
+    <div class="fallback-link">
+        <a href="https://fourmiles.vercel.app/" style="color:inherit; text-decoration: underline;">
+            Click here
+        </a> if you aren't redirected automatically.
+    </div>
+</body>
+</html>
